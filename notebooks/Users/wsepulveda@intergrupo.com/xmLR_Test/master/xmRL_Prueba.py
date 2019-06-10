@@ -9,7 +9,7 @@ Created on Tue Jun  4 08:36:32 2019
 
 @author: WSEPULVE
 """
-#comentario
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
