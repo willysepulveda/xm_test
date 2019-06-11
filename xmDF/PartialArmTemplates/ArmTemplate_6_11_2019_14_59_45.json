@@ -6,34 +6,12 @@
 			"type": "string",
 			"metadata": "Data Factory Name",
 			"defaultValue": "xmDF"
-		},
-		"AzureDatabricks1_accessToken": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks1'"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureDatabricks1')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureDatabricks",
-				"typeProperties": {
-					"domain": "https://eastus2.azuredatabricks.net",
-					"accessToken": {
-						"type": "SecureString",
-						"value": "[parameters('AzureDatabricks1_accessToken')]"
-					},
-					"existingClusterId": "0610-204602-cuff715"
-				}
-			},
-			"dependsOn": []
-		},
 		{
 			"name": "[concat(parameters('factoryName'), '/Prueba_EnvioMail')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
@@ -43,7 +21,6 @@
 					{
 						"name": "entrenamiento",
 						"type": "DatabricksNotebook",
-						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
 							"retry": 0,
@@ -51,7 +28,6 @@
 							"secureOutput": false,
 							"secureInput": false
 						},
-						"userProperties": [],
 						"typeProperties": {
 							"notebookPath": "/Users/wsepulveda@intergrupo.com/xmLR_Test/main/Main_Trainign"
 						},
@@ -78,7 +54,6 @@
 							"secureOutput": false,
 							"secureInput": false
 						},
-						"userProperties": [],
 						"typeProperties": {
 							"url": "https://prod-33.eastus.logic.azure.com:443/workflows/6218311e11c04c769186891e7719c17c/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=CLIr8Sni2p0wNWJbgp5zmCJggdlz647lmUlPEvhNiIM",
 							"method": "POST",
@@ -111,7 +86,6 @@
 							"secureOutput": false,
 							"secureInput": false
 						},
-						"userProperties": [],
 						"typeProperties": {
 							"url": "https://prod-94.eastus.logic.azure.com:443/workflows/722c2544ffa948198e6ea70329b5c8bb/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=VF38e2s4PgRaNZOqYn-NMTKf7SjbQ4gd02sZTU3Deho",
 							"method": "POST",
@@ -132,12 +106,8 @@
 						"type": "string",
 						"defaultValue": "wsepulveda@intergrupo.com, dboada@intergrupo.com, jorozcog@intergrupo.com"
 					}
-				},
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureDatabricks1')]"
-			]
+				}
+			}
 		}
 	]
 }

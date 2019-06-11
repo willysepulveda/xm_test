@@ -35,7 +35,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/Prueba_EnvioMail1')]",
+			"name": "[concat(parameters('factoryName'), '/Prueba_EnvioMail')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
