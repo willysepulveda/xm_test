@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks1'"
 		},
+		"xm_trigger_test_properties_Prueba_EnvioMail_parameters_EmailTo": {
+			"type": "string",
+			"defaultValue": "wsepulveda@intergrupo.com,dboada@intergrupo.com,jorozcog@intergrupo.com"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -40,6 +44,9 @@
 					},
 					"AzureDatabricks1_accessToken": {
 						"value": "[parameters('AzureDatabricks1_accessToken')]"
+					},
+					"xm_trigger_test_properties_Prueba_EnvioMail_parameters_EmailTo": {
+						"value": "[parameters('xm_trigger_test_properties_Prueba_EnvioMail_parameters_EmailTo')]"
 					}
 				}
 			},

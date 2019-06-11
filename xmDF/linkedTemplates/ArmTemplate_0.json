@@ -10,6 +10,10 @@
 		"AzureDatabricks1_accessToken": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks1'"
+		},
+		"xm_trigger_test_properties_Prueba_EnvioMail_parameters_EmailTo": {
+			"type": "string",
+			"defaultValue": "wsepulveda@intergrupo.com,dboada@intergrupo.com,jorozcog@intergrupo.com"
 		}
 	},
 	"variables": {
@@ -137,6 +141,39 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureDatabricks1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/xm_trigger_test')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "Prueba_EnvioMail",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"EmailTo": "[parameters('xm_trigger_test_properties_Prueba_EnvioMail_parameters_EmailTo')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Minute",
+						"interval": 2,
+						"startTime": "2019-06-11T15:20:00.000Z",
+						"endTime": "2019-06-11T16:00:00.000Z",
+						"timeZone": "UTC"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/Prueba_EnvioMail')]"
 			]
 		}
 	]

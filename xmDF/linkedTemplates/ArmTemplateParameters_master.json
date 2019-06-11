@@ -8,6 +8,9 @@
 		"AzureDatabricks1_accessToken": {
 			"value": ""
 		},
+		"xm_trigger_test_properties_Prueba_EnvioMail_parameters_EmailTo": {
+			"value": "wsepulveda@intergrupo.com,dboada@intergrupo.com,jorozcog@intergrupo.com"
+		},
 		"containerUri": {
 			"value": ""
 		},
